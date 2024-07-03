@@ -19,5 +19,6 @@ namespace CurrencyConverterAPI.Data
             modelBuilder.Entity<Currency>().HasIndex(c => c.CurrencyCode);
         }
 
+        public DbSet<Currency> Currencies { get; set; }
     }
 }
