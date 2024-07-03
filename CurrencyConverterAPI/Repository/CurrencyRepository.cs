@@ -15,6 +15,11 @@ namespace CurrencyConverterAPI.Repository
             _dbSet = context.Set<Currency>();
         }
 
+        public async Task<List<Currency>> GetAllCurrencies() 
+        {
+            return await _dbSet.ToListAsync();
+        }
+
         /// <summary>
         /// Retrieve a specific currency object from the database
         /// </summary>
