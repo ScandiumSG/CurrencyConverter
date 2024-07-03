@@ -13,12 +13,15 @@ namespace CurrencyConverterAPI.Endpoint
             app.MapPost("/", CalculateAmount);
         }
 
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public static async Task<IResult> GetAllEntries(CurrencyRepository repo) 
         {
             List<Currency> res = await repo.GetAllCurrencies();
             return TypedResults.Ok(res);
         }
 
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public static async Task<IResult> CalculateAmount([FromServices] CurrencyRepository repo, [FromBody] ConvertionRequest request)
         {
             // PLACEHOLDER
