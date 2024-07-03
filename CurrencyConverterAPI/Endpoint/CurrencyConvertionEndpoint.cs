@@ -21,6 +21,11 @@ namespace CurrencyConverterAPI.Endpoint
 
         public static async Task<IResult> CalculateAmount([FromServices] CurrencyRepository repo, [FromBody] ConvertionRequest request)
         {
+            // PLACEHOLDER
+            // While connection to actual db not functional this lets us test if the api works. 
+            return TypedResults.Ok("50");
+            
+
             if (request.CurrencyCode1 is null || request.CurrencyCode2 is null) 
             {
                 return TypedResults.BadRequest("Currencies are not properly specified");
