@@ -1,0 +1,38 @@
+version: '3.4'
+
+services:
+  currencyconverterapi:
+    container_name: ConverterApi
+    image: currencyconverterapi
+    build:
+      context: .
+      dockerfile: CurrencyConverterAPI/Dockerfile
+
+  cosmosdb:
+    container_name: cosmosdb
+    image: mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:latest
+    tty: true
+    restart: always
+    ports:
+        - "8081:8081"
+        - "8900:8900"
+        - "8901:8901"
+        - "8979:8979"
+        - "10250:10250"
+        - "10251:10251"
+        - "10252:10252"
+        - "10253:10253"
+        - "10254:10254"
+        - "10255:10255"
+        - "10256:10256"
+        - "10350:10350"
+    volumes:
+        -  vol_cosmos:/data/db
+        
+networks:
+    dockernet:
+        driver: bridge
+
+volumes:
+    vol_cosmos:   
+        driver: local
