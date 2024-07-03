@@ -96,3 +96,19 @@ The API is a .NET 8 minimal API, with a Entity Framework Core interface to the d
 
 The Services, Repository, Endpoints, and Models have all been separated as far as possible to both make the repository easy to understand and to allow for future expansion. 
 
+
+## Time estimate
+
+<details>
+
+
+| Topic     | Estimated time| 
+| -         | -         |
+| Database  | 2h 30min  | 
+| CLI*      | 1h        | 
+| Docker    | 40min     | 
+| Data processing | 40min|
+| Documentation | 20min | 
+| Total     |  5h 10min | 
+
+</details>
