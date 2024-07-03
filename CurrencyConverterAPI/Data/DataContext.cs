@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CurrencyConverterAPI.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CurrencyConverterAPI.Data
 {
@@ -12,6 +13,9 @@ namespace CurrencyConverterAPI.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            // Define primary key
+            modelBuilder.Entity<Currency>().HasIndex(c => c.CurrencyCode);
         }
+
     }
 }
