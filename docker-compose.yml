@@ -10,7 +10,7 @@ services:
     environment:
         - ASPNETCORE_ENVIRONMENT=Development
     ports:
-        - "7773:8080"
+        - "5143:8080"
     networks:
         - dockernet
 
