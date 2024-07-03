@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurrencyConverterAPI", "Cur
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{A770137E-CB52-4803-ABD0-C0D8320FFA71}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrencyConverterCLI", "CurrencyConverterCLI\CurrencyConverterCLI.csproj", "{749349A9-962E-48B2-8714-4A8A0296C014}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A770137E-CB52-4803-ABD0-C0D8320FFA71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A770137E-CB52-4803-ABD0-C0D8320FFA71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A770137E-CB52-4803-ABD0-C0D8320FFA71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{749349A9-962E-48B2-8714-4A8A0296C014}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{749349A9-962E-48B2-8714-4A8A0296C014}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{749349A9-962E-48B2-8714-4A8A0296C014}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{749349A9-962E-48B2-8714-4A8A0296C014}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
