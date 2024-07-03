@@ -7,6 +7,12 @@ services:
     build:
       context: .
       dockerfile: CurrencyConverterAPI/Dockerfile
+    environment:
+        - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+        - "7773:8080"
+    networks:
+        - dockernet
 
   cosmosdb:
     container_name: cosmosdb
@@ -15,19 +21,10 @@ services:
     restart: always
     ports:
         - "8081:8081"
-        - "8900:8900"
-        - "8901:8901"
-        - "8979:8979"
-        - "10250:10250"
-        - "10251:10251"
-        - "10252:10252"
-        - "10253:10253"
-        - "10254:10254"
-        - "10255:10255"
-        - "10256:10256"
-        - "10350:10350"
     volumes:
         -  vol_cosmos:/data/db
+    networks:
+        - dockernet
         
 networks:
     dockernet:
