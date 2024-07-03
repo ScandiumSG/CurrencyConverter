@@ -5,7 +5,7 @@ using System.Text.Json;
 
 namespace CurrencyConverterAPI.Services
 {
-    public class FetchingService
+    public class FetchingService: IDisposable
     {
         private Timer _timer;
         private HttpClient _httpClient;
@@ -19,9 +19,23 @@ namespace CurrencyConverterAPI.Services
             _apiUrl = "http://data.fixer.io/api/latest?access_key=" + token + "&format=1";
             _httpClient = new HttpClient();
             _currencyRepo = currencyRepo;
-            //_timer = new Timer(null, null, 0, 24*60*60);
+            // Define the function that is called, FetchData, the delay, 0, and the time until it repeats, 24h.
+            _timer = new Timer((async _ => await FetchData()), null, TimeSpan.Zero, TimeSpan.FromHours(24));
         }
 
+        /// <summary>
+        /// Dispose of the HttpClient and Timer objects when fetching no longer required.
+        /// </summary>
+        public void Dispose()
+        {
+            _httpClient.Dispose();
+            _timer.Dispose();
+        }
+
+        /// <summary>
+        /// Initialize a update of the currency values immediately
+        /// </summary>
+        /// <returns></returns>
         public async Task UpdateNow() 
         {
             await FetchData();
