@@ -1,11 +1,18 @@
-﻿namespace CurrencyConverterAPI.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace CurrencyConverterAPI.Models
 {
     public class Currency
     {
-        // Three letter currency code
+        /// <summary>
+        /// Three letter currency code
+        /// </summary>
+        [Key]
         public string CurrencyCode { get; set; }
 
-        // Relative value of the currency
+        /// <summary>
+        /// Relative value of the currency
+        /// </summary>
         public decimal ExchangeRate { get; set; }
     }
 }
