@@ -12,7 +12,7 @@ namespace CurrencyConverterAPI.Endpoint
             app.MapPost("/", CalculateAmount);
         }
 
-        public static async Task<IResult> CalculateAmount(CurrencyRepository repo, [FromQuery] ConvertionRequest request)
+        public static async Task<IResult> CalculateAmount([FromServices] CurrencyRepository repo, [FromBody] ConvertionRequest request)
         {
             Currency? Cur1 = await repo.GetCurrency(request.CurrencyCode1);
             Currency? Cur2 = await repo.GetCurrency(request.CurrencyCode2);
