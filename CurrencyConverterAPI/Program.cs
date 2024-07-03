@@ -1,10 +1,12 @@
 using CurrencyConverterAPI.Data;
+using CurrencyConverterAPI.Endpoint;
+using CurrencyConverterAPI.Models;
 using CurrencyConverterAPI.Repository;
 using CurrencyConverterAPI.Services;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-FetchingService updater = new FetchingService(builder.Configuration.GetConnectionString("fixerToken")!);
 
 builder.Services.AddDbContext<DataContext>
     (
@@ -13,11 +15,19 @@ builder.Services.AddDbContext<DataContext>
 
 builder.Services.AddScoped<CurrencyRepository, CurrencyRepository>();
 
+builder.Services.AddScoped<FetchingService>(provider =>
+{
+    var token = builder.Configuration.GetConnectionString("fixerToken")!;
+    var currencyRepo = provider.GetRequiredService<CurrencyRepository>();
+    return new FetchingService(token, currencyRepo);
+});
+
 var app = builder.Build();
 app.UseHttpsRedirection();
 
 app.MapGet("/", () => "Hello World!");
+app.MapGet("/update", async (FetchingService updater) => await updater.UpdateNow());
 
-app.MapGet("/update", async () => await updater.UpdateNow());
+app.CurrencyConvertionEndpointConfiguration();
 
 app.Run();
